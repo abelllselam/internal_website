@@ -1,4 +1,3 @@
-
 "use client"
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/common/navbar";
@@ -15,6 +14,7 @@ export default function Home() {
   }
   return (
     <main>
+      <Navbar />
       <About />
        <Service />
        {/* <AboutDemo /> */}

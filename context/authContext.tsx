@@ -221,14 +221,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   ) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${BASE_URL}/signup`, {
-        email,
-        password,
-        first_name: firstname,
-        middle_name: middlename,
-        last_name: lastname,
-        phone,
-      });
+      const response = await axios.post(
+        `${BASE_URL}/user-sync`,
+        {
+          email,
+          password,
+          first_name: firstname,
+          middle_name: middlename,
+          last_name: lastname,
+          phone,
+          role:"user"
+        } 
+      );
       const { token, user } = response.data;
       const userObj: User = {
         uid: user.user_id,
@@ -244,6 +248,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       Cookies.set("authToken", token, { expires: 7 });
       Cookies.set("userData", JSON.stringify(userObj), { expires: 7 });
       setUser(userObj);
+      router.replace("/login")
     } catch (e) {
       console.error(e);
       setError("Signup failed, please try again");

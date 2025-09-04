@@ -74,7 +74,7 @@ export default function Login() {
                 </p>
               )}
             </div>
-            <div className="flex flex-col mb-4 gap-1 items-start">
+            <div className="flex flex-col  gap-1 items-start">
               <Label>Password</Label>
               <Input
                 {...register("password")}
@@ -87,6 +87,9 @@ export default function Login() {
                   {errors.password.message}
                 </p>
               )}
+            </div>
+            <div className="w-full flex items-end justify-end mb-4">
+              <Link href="/forgot-password" className="text-blue-600">Forgot password?</Link>
             </div>
             <div>
               <Button
